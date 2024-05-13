@@ -20,3 +20,4 @@ CREATE TABLE filmes (
     categoria VARCHAR(15) NOT NULL,
     classificacao_idade VARCHAR(10) NOT NULL
 );
+id_filme, titulo, ano, sinopse, tempo, categoria, classificacao_idade
