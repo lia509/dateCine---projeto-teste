@@ -17,13 +17,13 @@ async function getMovieByParam(req, res) {
     const { param } = req.params;
     try {
         if (isNaN(param)) {
-            const result = await pool.query('SELECT * FROM filmes WHERE nome Like $1', [`%${param}%`]);
+            const result = await pool.query('SELECT * FROM filmes WHERE titulo Like $1', [`%${param}%`]);
             res.json({
                 total : result.rowCount,
                 filmes : result.rows
             });
         } else {
-            const result = await pool.query('SELECT * FROM filmes WHERE id = $1', [param]);
+            const result = await pool.query('SELECT * FROM filmes WHERE id_filme = $1', [param]);
             res.json({
                 total : result.rowCount,
                 filmes : result.rows
