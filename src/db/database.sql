@@ -22,3 +22,10 @@ CREATE TABLE filmes (
     classificacao_idade VARCHAR(10) NOT NULL,
     link VARCHAR(100)
 );
+
+CREATE TABLE contatos (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    mensagem VARCHAR(200) NOT NULL
+);
