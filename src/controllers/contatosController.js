@@ -50,7 +50,7 @@ async function updateContato(req, res) {
     const { id } = req.params;
     const { nome, email, mensagem } = req.body;
     try {
-        const result = await pool.query('UPDATE contatos SET nome = $2, email = $3, mensagem = $4  WHERE id = $1 RETURNING *', [nome, email, mensagem, id]);
+        const result = await pool.query('UPDATE contatos SET nome = $1, email = $2, mensagem = $3  WHERE id = $4 RETURNING *', [nome, email, mensagem, id]);
         res.json(result.rows[0]);
     } catch (error) {
         console.error('Error executing query', error);
@@ -62,7 +62,7 @@ async function deleteContato(req, res) {
     const { id } = req.params;
     try {
         const result = await pool.query('DELETE FROM contatos WHERE id = $1', [id]);
-        res.json({ message: 'Hero deleted successfully' });
+        res.json({ message: 'Deletado com sucesso' });
     } catch (error) {
         console.error('Error executing query', error);
         res.json({ error: error.message });

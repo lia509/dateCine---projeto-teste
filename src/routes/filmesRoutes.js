@@ -5,7 +5,7 @@ const filmesController = require('../controllers/filmesController');
 router.get('/filmes', filmesController.getAllMovies);
 router.get('/filmes/:param', filmesController.getMovieByParam)
 router.post('/filmes', filmesController.createMovie)
-router.put('/filmes/:id', filmesController.updateMovie)
-router.delete('/filmes/:id', filmesController.deleteMovie)
+router.put('/filmes/:id_filme', filmesController.updateMovie)
+router.delete('/filmes/:id_filme', filmesController.deleteMovie)
 
 module.exports = router;
