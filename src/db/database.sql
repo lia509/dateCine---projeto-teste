@@ -1,6 +1,6 @@
-CREATE DATABASE datecine;
+CREATE DATABASE datacine;
 
-\c dateCine;
+\c dataCine;
 
 CREATE TABLE produtores (
     produtor_id INT PRIMARY KEY,
