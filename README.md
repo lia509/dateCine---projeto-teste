@@ -7,6 +7,8 @@ http://localhost:3100/contatos
 
 ## Arquivo SQL 
 • Banco de dados rodando na porta 7007;
+
+
 • Server Rodando na porta 3100;
 
 CREATE DATABASE datacine;
