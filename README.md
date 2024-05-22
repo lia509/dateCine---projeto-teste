@@ -15,6 +15,9 @@ CREATE DATABASE datacine;
 
 \c dataCine;
 
+
+
+
 CREATE TABLE produtores (
     produtor_id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
