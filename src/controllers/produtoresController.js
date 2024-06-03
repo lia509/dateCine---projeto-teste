@@ -58,12 +58,13 @@ async function createProdutores(req, res) {
 
 async function updateProdutores(req, res) {
     const { produtor_id } = req.params;
+    console.log(produtor_id);
     const { nome, nacionalidade, descricao, contato } = req.body;
     try {
         const result = await pool.query('UPDATE produtores SET nome = $1, nacionalidade = $2, descricao = $3, contato = $4  WHERE produtor_id = $5 RETURNING *', [ nome, nacionalidade, descricao, contato, produtor_id]);
         res.json(result.rows[0]);
     } catch (error) {
-        console.error('Error executing query', error);
+        console.error('Erro em atualizar produtor', error);
         res.json({ error: error.message });
     }
 }

@@ -3,8 +3,12 @@ const express = require('express');
 const filmesRoutes = require('./routes/filmesRoutes');
 const produtoresRoutes = require('./routes/produtoresRoutes');
 const contatosRoutes = require('./routes/contatosRoutes');
+const cors = require('cors')
+
 
 const app = express();
+
+app.use(cors())
 const port = process.env.PORT || 3100;  // Default to 3000 if PORT is not set
 
 app.use(express.json());

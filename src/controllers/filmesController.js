@@ -51,13 +51,19 @@ async function getMovieByParam(req, res) {
     const { param } = req.params;
     try {
         if (isNaN(param)) {
-            const result = await pool.query('SELECT * FROM filmes WHERE titulo Like $1', [`%${param}%`]);
+            const result = await pool.query('SELECT * FROM filmes WHERE categoria Like $1', [`%${param}%`]);
             res.json({
                 total : result.rowCount,
                 filmes : result.rows
             });
+        // } else if (isNaN(param)){
+        //     const result = await pool.query('SELECT * FROM filmes WHERE categoria Like $1', [`%${param}%`]);
+        //     res.json({
+        //         total : result.rowCount,
+        //         filmes : result.rows
+        //     });
         } else {
-            const result = await pool.query('SELECT * FROM filmes WHERE id_filme = $1', [param]);
+            const result = await pool.query('SELECT * FROM filmes WHERE categoria  = $1', [param]);
             res.json({  
                 total : result.rowCount,
                 filmes : result.rows
@@ -72,11 +78,7 @@ async function getMovieByParam(req, res) {
 async function createMovie(req, res) {
     try {
     const { titulo, ano, sinopse, tempo, categoria, classificacao_idade, link, link_capa, produtor_id} = req.body;
-
-    let final_link = ["/view?usp=drive_link"];
-    if (!link.includes(final_link)) {
-        res.status(500).send('O link precisa terminar em "/view?usp=drive_link". Por favor suba seu filme para o google drive e extraia o link de la. ');
-    } else {
+{
         const result = await pool.query('INSERT INTO filmes ( titulo, ano, sinopse, tempo, categoria, classificacao_idade, link, link_capa, produtor_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *', [ titulo, ano, sinopse, tempo, categoria, classificacao_idade, link, link_capa, produtor_id]);
         res.json(result.rows[0]);
 
